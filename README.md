@@ -24,7 +24,7 @@ STEP 6: Use zscore of to remove outliers
 
 ## STEP 1: Read the Data
 
-```
+```python
 import pandas as pd
 
 data = pd.read_csv('Loan_data (1).csv')
@@ -37,7 +37,7 @@ data.head()
 ![image](https://github.com/user-attachments/assets/3a86a34d-caf9-41f4-b2ae-ce1e212b1af2)
 
 ## STEP 2: Get the Information About the Data
-```
+```python
 # Get the information about the data
 data.info()
 
@@ -47,7 +47,7 @@ data.info()
 ![image](https://github.com/user-attachments/assets/c8748d62-c1b5-4cbb-b4cf-0e4401f51f0e)
 
 ## STEP 3: Check for null values
-```
+```python
 # Check for null values 
 data.isnull().sum()
 ```
@@ -55,7 +55,7 @@ data.isnull().sum()
 ![image](https://github.com/user-attachments/assets/0ece57c1-674b-4402-91e9-587ac205f79e)
 
 ## STEP 4 : Handling missing values
-```
+```python
 # option 1 : to drop the null values
 # Remove the null values from the data
 clean_data = data.dropna()
@@ -67,7 +67,7 @@ print(clean_data.isnull().sum())
 ### Output :
 ![image](https://github.com/user-attachments/assets/c5087278-2ecf-461f-beb7-af1a130c6e51)
 
-```
+```python
 # option 2 : to fill the missing values
 # Fill missing values for numerical columns with the median
 data['LoanAmount'].fillna(data['LoanAmount'].median(), inplace=True)
@@ -91,7 +91,7 @@ print(data.isnull().sum())
 
 ## STEP 4: Save the Clean Data to a File
 
-```
+```python
 # Save the clean data to a new CSV file
 clean_data.to_csv('clean_loan_data.csv', index=False)
 
@@ -103,7 +103,7 @@ print("Clean data saved to 'clean_loan_data.csv'")
 ![image](https://github.com/user-attachments/assets/ee71d728-3a50-4867-8fce-042301b0816a)
 
 ## STEP 5: Remove Outliers Using IQR (Interquartile Range)
-```
+```python
 # Define a function to remove outliers based on IQR
 def remove_outliers_iqr(df, column):
     Q1 = df[column].quantile(0.25)
@@ -127,7 +127,7 @@ print(clean_data.describe())
 ![image](https://github.com/user-attachments/assets/3f3cec00-3359-47e9-9772-e7f31e45995f)
 
 ## STEP 6: Remove Outliers Using Z-Score
-```
+```python
 from scipy import stats
 
 # Define a function to remove outliers based on Z-score
